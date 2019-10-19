@@ -1,4 +1,4 @@
-# Dockerfile for ROS Kinetic
+# Dockerfile for ROS Kinetic Full with Gazebo 7
 # Developed by SCSLab @ Iowa State University
 
 # use ros:kinetic-desktop as the base

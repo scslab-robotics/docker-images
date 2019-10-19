@@ -7,7 +7,7 @@ FROM scslabisu/turtlebot
 # add a non-privilieged user
 RUN useradd -ms /bin/bash rosuser
 
-# switch to non-privilieged user
+# switch to the non-privilieged user
 USER rosuser
 WORKDIR /home/rosuser
 

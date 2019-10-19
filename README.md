@@ -1,6 +1,7 @@
 # Docker Images for ROS-based Research
 
 This repository contains `Dockerfile`s for ROS-based research projects.
+Please refer to our [Docker Hub page](https://hub.docker.com/u/scslabisu) for pulling the images.
 
 ## How to build images
 
@@ -8,13 +9,13 @@ Please refer to [Docker documentation](https://docs.docker.com/) for details on 
 
 ## How to download the images
 
-### ros-kinetic-full with gazebo7
+### ROS Kinetic with Gazebo 7
 
-`docker pull scslab/ros-kinetic`
+`docker pull scslabisu/ros-kinetic-full`
 
-### ros-kinetic, gazebo7 and turtlebot
+### ROS Kinetic, Gazebo 7 and Turtlebot
 
-`docker pull scslab/turtlebot`
+`docker pull scslabisu/turtlebot`
 
 ## Author(s)
 

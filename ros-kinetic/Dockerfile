@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     ros-kinetic-desktop-full \
 	python-rosinstall-generator \
 	wget \
+	&& apt-get autoremove --purge -y \
     && rm -rf /var/lib/apt/lists/*
 
 # expose port number from ROS_MASTER_URI

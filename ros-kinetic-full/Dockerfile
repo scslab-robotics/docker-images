@@ -14,3 +14,6 @@ RUN apt-get update && apt-get install -y \
 
 # expose port number from ROS_MASTER_URI
 EXPOSE 11311
+
+# expose port number from GAZEBO_MASTER_URI
+EXPOSE 11345

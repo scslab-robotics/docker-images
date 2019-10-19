@@ -7,6 +7,7 @@ FROM quay.io/scslab/gazebo7
 # install requirements
 RUN apt-get update && apt-get install -y \
     udev \
+	&& apt-get autoremove --purge -y \
     && rm -rf /var/lib/apt/lists/*
 
 # install turtlebot packages
@@ -15,4 +16,5 @@ RUN apt-get update && apt-get install -y \
 	ros-kinetic-turtlebot-apps \
 	ros-kinetic-turtlebot-interactions \
 	ros-kinetic-turtlebot-simulator \
+	&& apt-get autoremove --purge -y \
     && rm -rf /var/lib/apt/lists/*

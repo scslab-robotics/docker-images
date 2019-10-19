@@ -11,6 +11,7 @@ RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb
 	&& apt-get update && apt-get install -y \
 	gazebo7 \
 	libgazebo7-dev \
+	&& apt-get autoremove --purge -y \
 	&& rm -rf /var/lib/apt/lists/*
 
 # expose port number from GAZEBO_MASTER_URI

@@ -1,7 +1,6 @@
 # Docker Images for ROS-based Research
 
 This repository contains `Dockerfile`s for ROS-based research projects.
-The images can be downloaded from [quay.io](https://quay.io/organization/scslab) repository.
 
 ## How to build images
 
@@ -9,17 +8,13 @@ Please refer to [Docker documentation](https://docs.docker.com/) for details on 
 
 ## How to download the images
 
-### ros-kinetic
+### ros-kinetic-full with gazebo7
 
-`docker pull quay.io/scslab/ros-kinetic`
-
-### ros-kinetic and gazebo7
-
-`docker pull quay.io/scslab/gazebo7`
+`docker pull scslab/ros-kinetic`
 
 ### ros-kinetic, gazebo7 and turtlebot
 
-`docker pull quay.io/scslab/turtlebot`
+`docker pull scslab/turtlebot`
 
 ## Author(s)
 

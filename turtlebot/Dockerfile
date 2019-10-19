@@ -2,7 +2,7 @@
 # Developed by SCSLab @ Iowa State University
 
 # use gazebo7 image as the base
-FROM quay.io/scslab/gazebo7
+FROM scslabisu/gazebo7
 
 # install requirements
 RUN apt-get update && apt-get install -y \

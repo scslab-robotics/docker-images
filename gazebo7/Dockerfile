@@ -2,7 +2,7 @@
 # Developed by SCSLab @ Iowa State University
 
 # use ros-kinetic image as the base
-FROM quay.io/scslab/ros-kinetic
+FROM scslab/ros-kinetic
 
 # install gazebo packages
 RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list' \

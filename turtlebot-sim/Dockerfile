@@ -2,7 +2,7 @@
 # Developed by SCSLab @ Iowa State University
 
 # use turtlebot image as the base
-FROM quay.io/scslab/turtlebot
+FROM scslabisu/turtlebot
 
 # add a non-privilieged user
 RUN useradd -ms /bin/bash rosuser

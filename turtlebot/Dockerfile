@@ -6,7 +6,7 @@ FROM quay.io/scslab/gazebo7
 
 # install requirements
 RUN apt-get update && apt-get install -y \
-    udevadm \
+    udev \
     && rm -rf /var/lib/apt/lists/*
 
 # install turtlebot packages

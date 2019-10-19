@@ -4,6 +4,11 @@
 # use gazebo7 image as the base
 FROM quay.io/scslab/gazebo7
 
+# install requirements
+RUN apt-get update && apt-get install -y \
+    udevadm \
+    && rm -rf /var/lib/apt/lists/*
+
 # install turtlebot packages
 RUN apt-get update && apt-get install -y \
     ros-kinetic-turtlebot \

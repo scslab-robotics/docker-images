@@ -1,8 +1,15 @@
-# Dockerfile for GzWeb with Turtlebot
+# Dockerfile for GzWeb with ROS Kinetic
 # Developed by SCSLab @ Iowa State University
 
+# Running instructions:
+#   docker run --name gzweb -p 8080:8080 -e "GAZEBO_MASTER_URI=http://172.17.0.2:11345" -d scslabisu/gzweb
+# where;
+#   --name gzweb => sets container name to "gzweb"
+#   -p 8080:8080 => forwards default gzweb port to localhost
+#   -e "......." => pass environmental variables to the container
+#   -d           => daemonize the container, i.e. run in background
+
 # set the base image
-#FROM scslabisu/turtlebot
 FROM scslabisu/ros-kinetic-full
 
 # use nodesource to install node.js v6.x on xenial
@@ -35,11 +42,11 @@ RUN hg up default
 # install node.js modules
 RUN npm install
 
-# build gzweb
-RUN npm run deploy
+# build gzweb and download models
+RUN ./deploy.sh -m
 
 # gzweb uses port 8080 by default
 EXPOSE 8080
 
 # launch gzweb
-#CMD ["npm", "start"]
+CMD ["npm", "start"]

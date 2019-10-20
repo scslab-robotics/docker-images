@@ -39,11 +39,15 @@ WORKDIR /home/rosuser/gzweb
 # switch to gzweb release branch
 RUN hg up default
 
-# install node.js modules
-RUN npm install
+# build gzweb
+RUN /bin/bash -c "source /usr/share/gazebo/setup.sh" \
+    && npm install \
+    && ./deploy.sh -m local
 
-# build gzweb and use local model database
-RUN ./deploy.sh -m local
+# TO-DO:
+#   1. GAZEBO_MODEL_PATH appears to be incorrect after sourcing Gazebo setup.sh
+#   2. turtlebot_description package needs some additional work to enable gzweb
+#      see https://bitbucket.org/iche033/turtlebot_race/src/default/gazebo_models/turtlebot_description/
 
 # gzweb uses port 8080 by default
 EXPOSE 8080

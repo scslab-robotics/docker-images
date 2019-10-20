@@ -39,11 +39,10 @@ WORKDIR /home/rosuser/gzweb
 # switch to gzweb release branch
 RUN hg up default
 
-# install node.js modules
-RUN npm install
-
-# build gzweb and download models
-RUN ./deploy.sh -m
+# build gzweb
+RUN /bin/bash -c "source /usr/share/gazebo/setup.sh" \
+    && npm install \
+    && ./deploy.sh -m
 
 # gzweb uses port 8080 by default
 EXPOSE 8080

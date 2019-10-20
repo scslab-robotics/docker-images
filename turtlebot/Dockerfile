@@ -2,7 +2,7 @@
 # Developed by SCSLab @ Iowa State University
 
 # use ros-kinetic-full image as the base
-FROM scslabisu/ros-kinetic-full
+FROM scslabisu/ros-kinetic:desktop-full
 
 # install turtlebot packages
 RUN apt-get update && apt-get install -y \

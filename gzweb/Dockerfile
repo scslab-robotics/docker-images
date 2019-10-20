@@ -10,7 +10,7 @@
 #   -d           => daemonize the container, i.e. run in background
 
 # set the base image
-FROM scslabisu/ros-kinetic-full
+FROM scslabisu/ros-kinetic:desktop-full
 
 # use nodesource to install node.js v6.x on xenial
 RUN curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - \

@@ -11,11 +11,15 @@ Please refer to [Docker documentation](https://docs.docker.com/) for details on 
 
 ### ROS Kinetic with Gazebo 7
 
-`docker pull scslabisu/ros-kinetic-full`
+`docker pull scslabisu/ros-kinetic:desktop-full`
+
+### ROS Kinetic, Gazebo 7 and GzWeb
+
+`docker pull scslabisu/gzweb:latest`
 
 ### ROS Kinetic, Gazebo 7 and Turtlebot
 
-`docker pull scslabisu/turtlebot`
+`docker pull scslabisu/turtlebot:latest`
 
 ## Author(s)
 

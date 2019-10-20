@@ -2,7 +2,7 @@
 # Developed by SCSLab @ Iowa State University
 
 # Running instructions:
-#   docker run --name gzweb -p 8080:8080 -e "GAZEBO_MASTER_URI=http://172.17.0.2:11345" -d scslabisu/gzweb
+#   docker run --name gzweb -p 8080:8080 -e "GAZEBO_MASTER_URI=http://172.17.0.2:11345" -d scslabisu/gzweb:latest
 # where;
 #   --name gzweb => sets container name to "gzweb"
 #   -p 8080:8080 => forwards default gzweb port to localhost

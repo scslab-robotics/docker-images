@@ -2,7 +2,7 @@
 # Developed by SCSLab @ Iowa State University
 
 # Running instructions
-#   docker run --name tbsim -d scslabisu/turtlebot-sim
+#   docker run --name tbsim -d scslabisu/turtlebot:sim-default
 # where;
 #   --name tbsim => sets container name to "tbsim"
 #   -d           => daemonize the container, i.e. run in background

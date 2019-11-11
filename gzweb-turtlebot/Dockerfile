@@ -40,15 +40,18 @@ WORKDIR /home/rosuser/gzweb
 # switch to gzweb release branch
 RUN hg up default
 
-# build gzweb
-RUN /bin/bash -c "source /usr/share/gazebo/setup.sh" \
-    && npm install \
-    && ./deploy.sh -m local
+# copy models to gzweb assets directory
+RUN mkdir -p http/client/assets \
+    && cp -r /opt/ros/kinetic/share/turtlebot_description http/client/assets \
+    && cp -r /opt/ros/kinetic/share/kobuki_description http/client/assets
+#RUN /ros_entrypoint.sh xacro --inorder http/client/assets/turtlebot_description/robots/kobuki_hexagons_kinect.urdf.xacro > http/client/assets/turtlebot_description/kobuki_hexagons.urdf
+RUN /ros_entrypoint.sh xacro --inorder http/client/assets/turtlebot_description/robots/kobuki_hexagons_asus_xtion_pro.urdf.xacro > http/client/assets/turtlebot_description/kobuki_hexagons.urdf
+RUN sed -i 's/package:\/\//model:\/\//g' http/client/assets/turtlebot_description/kobuki_hexagons.urdf
+COPY --chown=rosuser:rosuser package.config http/client/assets/turtlebot_description/package.config
 
-# TO-DO:
-#   1. GAZEBO_MODEL_PATH appears to be incorrect after sourcing Gazebo setup.sh
-#   2. turtlebot_description package needs some additional work to enable gzweb
-#      see https://bitbucket.org/iche033/turtlebot_race/src/default/gazebo_models/turtlebot_description/
+# build gzweb
+RUN npm install \
+    && ./deploy.sh -m local
 
 # gzweb uses port 8080 by default
 EXPOSE 8080

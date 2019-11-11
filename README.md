@@ -9,17 +9,21 @@ Please refer to [Docker documentation](https://docs.docker.com/) for details on 
 
 ## How to download the images
 
-### ROS Kinetic with Gazebo 7
+### ROS Kinetic and Gazebo 7
 
 `docker pull scslabisu/ros-kinetic:desktop-full`
-
-### ROS Kinetic, Gazebo 7 and GzWeb
-
-`docker pull scslabisu/gzweb:latest`
 
 ### ROS Kinetic, Gazebo 7 and Turtlebot
 
 `docker pull scslabisu/turtlebot:latest`
+
+### ROS Kinetic and Gazebo 7 with GzWeb
+
+`docker pull scslabisu/gzweb:latest`
+
+### ROS Kinetic, Gazebo 7 and Turtlebot with GzWeb
+
+`docker pull scslabisu/gzweb:turtlebot`
 
 ## Author(s)
 

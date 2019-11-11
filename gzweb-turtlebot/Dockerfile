@@ -44,9 +44,17 @@ RUN hg up default
 RUN mkdir -p http/client/assets \
     && cp -r /opt/ros/kinetic/share/turtlebot_description http/client/assets \
     && cp -r /opt/ros/kinetic/share/kobuki_description http/client/assets
+
+# process urdf model
+#COPY --chown=rosuser:rosuser kobuki_hexagons_asus_xtion_pro.urdf http/client/assets/turtlebot_description/kobuki_hexagons.urdf
 #RUN /ros_entrypoint.sh xacro --inorder http/client/assets/turtlebot_description/robots/kobuki_hexagons_kinect.urdf.xacro > http/client/assets/turtlebot_description/kobuki_hexagons.urdf
 RUN /ros_entrypoint.sh xacro --inorder http/client/assets/turtlebot_description/robots/kobuki_hexagons_asus_xtion_pro.urdf.xacro > http/client/assets/turtlebot_description/kobuki_hexagons.urdf
+
+
+# necessary conversion step for gzweb
 RUN sed -i 's/package:\/\//model:\/\//g' http/client/assets/turtlebot_description/kobuki_hexagons.urdf
+
+# copy model.config to turtlebot_description
 COPY --chown=rosuser:rosuser model.config http/client/assets/turtlebot_description/model.config
 
 # build gzweb

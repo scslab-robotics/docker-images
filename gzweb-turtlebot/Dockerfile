@@ -47,7 +47,7 @@ RUN mkdir -p http/client/assets \
 #RUN /ros_entrypoint.sh xacro --inorder http/client/assets/turtlebot_description/robots/kobuki_hexagons_kinect.urdf.xacro > http/client/assets/turtlebot_description/kobuki_hexagons.urdf
 RUN /ros_entrypoint.sh xacro --inorder http/client/assets/turtlebot_description/robots/kobuki_hexagons_asus_xtion_pro.urdf.xacro > http/client/assets/turtlebot_description/kobuki_hexagons.urdf
 RUN sed -i 's/package:\/\//model:\/\//g' http/client/assets/turtlebot_description/kobuki_hexagons.urdf
-COPY --chown=rosuser:rosuser package.config http/client/assets/turtlebot_description/package.config
+COPY --chown=rosuser:rosuser model.config http/client/assets/turtlebot_description/model.config
 
 # build gzweb
 #RUN npm install && ./deploy.sh -m local

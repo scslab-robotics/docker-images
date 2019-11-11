@@ -41,8 +41,10 @@ WORKDIR /home/rosuser/gzweb
 RUN hg up default
 
 # build gzweb
-RUN /bin/bash -c "source /usr/share/gazebo/setup.sh" \
-    && npm install \
+#RUN /bin/bash -c "source /usr/share/gazebo/setup.sh \
+#    && npm install \
+#    && ./deploy.sh -m"
+RUN npm install \
     && ./deploy.sh -m
 
 # gzweb uses port 8080 by default

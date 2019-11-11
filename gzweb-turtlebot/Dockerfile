@@ -50,7 +50,6 @@ RUN mkdir -p http/client/assets \
 #RUN /ros_entrypoint.sh xacro --inorder http/client/assets/turtlebot_description/robots/kobuki_hexagons_kinect.urdf.xacro > http/client/assets/turtlebot_description/kobuki_hexagons.urdf
 RUN /ros_entrypoint.sh xacro --inorder http/client/assets/turtlebot_description/robots/kobuki_hexagons_asus_xtion_pro.urdf.xacro > http/client/assets/turtlebot_description/kobuki_hexagons.urdf
 
-
 # necessary conversion step for gzweb
 RUN sed -i 's/package:\/\//model:\/\//g' http/client/assets/turtlebot_description/kobuki_hexagons.urdf
 
@@ -61,10 +60,10 @@ COPY --chown=rosuser:rosuser model.config http/client/assets/turtlebot_descripti
 RUN npm install
 
 # use local models
-#RUN ./deploy.sh -m local
+RUN ./deploy.sh -m local
 
 # use gazebo_models
-RUN ./deploy.sh -m
+#RUN ./deploy.sh -m
 
 # gzweb uses port 8080 by default
 EXPOSE 8080

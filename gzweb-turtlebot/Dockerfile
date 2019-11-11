@@ -50,8 +50,13 @@ RUN sed -i 's/package:\/\//model:\/\//g' http/client/assets/turtlebot_descriptio
 COPY --chown=rosuser:rosuser model.config http/client/assets/turtlebot_description/model.config
 
 # build gzweb
-#RUN npm install && ./deploy.sh -m local
-RUN npm install && ./deploy.sh -m
+RUN npm install
+
+# use local models
+RUN ./deploy.sh -m local
+
+# use gazebo_models
+#RUN ./deploy.sh -m
 
 # gzweb uses port 8080 by default
 EXPOSE 8080

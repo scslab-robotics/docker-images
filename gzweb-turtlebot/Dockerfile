@@ -40,6 +40,11 @@ WORKDIR /home/rosuser/gzweb
 # switch to gzweb release branch
 RUN hg up default
 
+# start building gzweb
+RUN npm install
+#RUN ./deploy.sh -m local
+RUN ./deploy.sh -m
+
 # copy models to gzweb assets directory
 RUN mkdir -p http/client/assets \
     && cp -r /opt/ros/kinetic/share/turtlebot_description http/client/assets \
@@ -50,20 +55,17 @@ RUN mkdir -p http/client/assets \
 #RUN /ros_entrypoint.sh xacro --inorder http/client/assets/turtlebot_description/robots/kobuki_hexagons_kinect.urdf.xacro > http/client/assets/turtlebot_description/kobuki_hexagons.urdf
 RUN /ros_entrypoint.sh xacro --inorder http/client/assets/turtlebot_description/robots/kobuki_hexagons_asus_xtion_pro.urdf.xacro > http/client/assets/turtlebot_description/kobuki_hexagons.urdf
 
+# convert to sdf
+RUN /ros_entrypoint.sh gz sdf -p http/client/assets/turtlebot_description/kobuki_hexagons.urdf > http/client/assets/turtlebot_description/kobuki_hexagons.sdf
+
 # necessary conversion step for gzweb
 RUN sed -i 's/package:\/\//model:\/\//g' http/client/assets/turtlebot_description/kobuki_hexagons.urdf
 
 # copy model.config to turtlebot_description
 COPY --chown=rosuser:rosuser model.config http/client/assets/turtlebot_description/model.config
 
-# build gzweb
-RUN npm install
-
-# use local models
-RUN ./deploy.sh -m local
-
-# use gazebo_models
-#RUN ./deploy.sh -m
+# build gzweb again to include new models
+RUN ./deploy.sh
 
 # gzweb uses port 8080 by default
 EXPOSE 8080
